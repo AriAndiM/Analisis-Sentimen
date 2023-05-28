@@ -69,11 +69,11 @@ with st.container():
         
         # lower case
         lower = remove_punctuation(teks_inputan).lower()
-        st.write(lower)
+        # st.write(lower)
 
         # proses tokenize berdasarkan spasi menggunakan WhitespaceTokenizer() dari hasil lower tweet
         tokenize = nltk.tokenize.WhitespaceTokenizer().tokenize(lower)
-        st.write(tokenize)
+        # st.write(tokenize)
 
         # stemming
         # create stemmer
@@ -92,7 +92,7 @@ with st.container():
             return ','.join(b)
         
         data_steming = steming(tokenize)
-        st.write(data_steming)
+        # st.write(data_steming)
         # Stopword Removal            
 
         # Initialize the stopwords
@@ -109,7 +109,7 @@ with st.container():
             return ','.join(a)
             
         stopword = remove_stopwords(data_steming)
-        st.write(stopword)
+        # st.write(stopword)
 
         # Filter Token By Length
         def filter_by_length(kata):
@@ -134,13 +134,13 @@ with st.container():
             nbp = pickle.load(r)
 
         filter = filter_by_length(stopword)
-        st.write(filter)
+        # st.write(filter)
         # transform = vectorizer.transform([" ".join(a)])
         transform = vectorizer.transform([filter])
-        st.write(transform)
+        # st.write(transform)
         
         # pred = nbp.predict(np.asarray(transform.todense()))
         pred = nbp.predict(transform)
-        st.write(pred)
+        st.write('Teks ','"',teks_inputan,'"',' memiliki sentimen :',pred[0])
         
             
