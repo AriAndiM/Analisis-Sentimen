@@ -96,6 +96,7 @@ with st.container():
         # Stopword Removal            
 
         # Initialize the stopwords
+        nltk.download('stopwords')
         stoplist = stopwords.words('indonesian')
         def remove_stopwords(x):
             a = []
